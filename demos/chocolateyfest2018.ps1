@@ -30,35 +30,39 @@ executeScript "RemoveDefaultApps.ps1";
 executeScript "CommonDevTools.ps1";
 executeScript "Browsers.ps1";
 
-executeScript "HyperV.ps1";
+#executeScript "HyperV.ps1";
 RefreshEnv
 executeScript "WSL.ps1";
 RefreshEnv
-executeScript "Docker.ps1";
-
+#executeScript "Docker.ps1";
+choco install -y virtualbox
+choco install -y vagrant
+choco install -y vboxguestadditions.install
+choco install -y elasticsearch
+choco install -y kibana
+scoop install aria2
+scoop install ssh coreutils nodejs ansible 
+choco install -y anaconda3
 choco install -y powershell-core
-choco install -y azure-cli
-Install-Module -Force Az
+choco install -y filezilla
+choco install -y rufus
+choco install -y 
+#Install-Module -Force Az
 Install-Module -Force posh-git
-choco install -y microsoftazurestorageexplorer
-choco install -y terraform
-
-# Install tools in WSL instance
+choco install -y sysinternals
 write-host "Installing tools inside the WSL distro..."
-Ubuntu1804 run apt install ansible -y
-Ubuntu1804 run apt install nodejs -y
 
 # personalize
-choco install -y microsoft-teams
-choco install -y office365business
+#choco install -y microsoft-teams
+#choco install -y office365business
 
 # checkout recent projects
 mkdir C:\github
 cd C:\github
 git.exe clone https://github.com/microsoft/windows-dev-box-setup-scripts
-git.exe clone https://github.com/microsoft/winappdriver
-git.exe clone https://github.com/microsoft/wsl
-git.exe clone https://github.com/PowerShell/PowerShell
+#git.exe clone https://github.com/microsoft/winappdriver
+#git.exe clone https://github.com/microsoft/wsl
+#git.exe clone https://github.com/PowerShell/PowerShell
 
 # set desktop wallpaper
 Invoke-WebRequest -Uri 'http://chocolateyfest.com/wp-content/uploads/2018/05/img-bg-front-page-header-NO_logo-opt.jpg' -Method Get -ContentType image/jpeg -OutFile 'C:\github\chocofest.jpg'
